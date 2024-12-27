@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(https://static.toiimg.com/thumb/msid-113930350,width-1280,height-720,resizemode-4/113930350.jpg);
+            background-repeat: no-repeat;
+            background-size: 100vw 100vh;
+            height: 100vh ;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            align-items: center;
+
+        }
+        .form-div{
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 20px 50px;
+            border-radius: 10px;
+        }
+        span{
+            color: #692803;
+            /* text-decoration: ; */
+        }
+        .form-div h2{
+            color: #2d2c2c;
+            
+        }
+        .form-div input{
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 8px 15px;
+            border-radius: 10px;
+            border: none;
+            margin:5px 0;
+        }
+        .btn-div{
+            text-align: center;
+        }
+        .btn-div button{
+           background-color: #074280;
+           color: #fff;
+           padding: 5px 30px;
+           margin-top: 10px;
+           border: 2px solid #074280;
+           border-radius: 12px;
+        }
+        .btn-div button:hover{
+            background-color: #fff;
+            color:#074280;
+            border: 2px solid #074280;
+        }
+    
+    </style>
+</head>
+<body>
+<div class="form-div">
+    <form action="" method="post" >
+        {% csrf_token %}
+        <span><h2>SignIn</h2></span>
+        <label >username: </label> <br>
+        <input type="text" name="username" > <br>
+        <label>password: </label> <br>
+        <input type="password" name="password"> <br>
+       <div class="btn-div">
+        <button type="submit">login</button>
+       </div>
+    </form>
+</div>
+</body>
+</html>

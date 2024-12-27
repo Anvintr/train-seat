@@ -1,0 +1,378 @@
+/* /*
+    DEMO STYLE
+*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+#sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    background-color: #343a40;
+    padding-top: 50px;
+    transition: all 0.3s;
+  }
+  #sidebar.active {
+    left: -250px;
+  }
+  #dismiss {
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    color: #fff;
+  }
+  #dismiss:hover {
+    background-color: #212529;
+  }
+  .sidebar-header {
+    padding: 20px;
+    background-color: #343a40;
+  }
+  .sidebar-header h3 {
+    color: #fff;
+    margin-top: 0;
+  }
+  .list-unstyled.components {
+    padding: 20px;
+    border-bottom: 1px solid #4e5256;
+  }
+  .list-unstyled.components p {
+    color: #fff;
+  }
+  .list-unstyled.components ul {
+    padding: 20px 0;
+    border-bottom: 1px solid #4e5256;
+  }
+  .list-unstyled.components ul a {
+    color: #fff;
+    padding: 10px;
+    display: block;
+  }
+  .list-unstyled.components ul a:hover {
+    background-color: #212529;
+  }
+  .fa-solid {
+    margin-right: 10px;
+  }
+  #sidebarCollapse {
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    background-color: #343a40;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    cursor: pointer;
+    color: #fff;
+    z-index: 999;
+    display: none; /* Hide by default */
+  }
+  #sidebarCollapse:hover {
+    background-color: #212529;
+  }
+  @media (max-width: 768px) {
+    #sidebarCollapse {
+      display: block; /* Show toggler button */
+    }
+    #sidebar {
+      left: -250px; /* Hide sidebar by default */
+      z-index: 100;
+    }
+    #sidebar.active {
+      left: 0;
+    }
+  }
+@media screen and (min-width: 769px) {
+  .close{
+      display: none;
+  }
+  .main{
+    margin-left:250px ;
+}
+}
+
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #fafafa;
+}
+
+p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #999;
+}
+
+a,
+a:hover,
+a:focus {
+    color: inherit;
+    text-decoration: none;
+    /* transition: all 0.3s; */
+    
+}
+
+.navbar {
+    padding: 15px 10px;
+    background: #fff;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 40px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-btn {
+    box-shadow: none;
+    outline: none !important;
+    border: none;
+}
+
+.line {
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px dashed #ddd;
+    margin: 40px 0;
+} */
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+
+.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    background: #014749;
+    color: #fff;
+    transition: all 0.3s;
+}
+
+#sidebar.active {
+    margin-left: -250px;
+}
+
+#sidebar .sidebar-header {
+    padding: 20px;
+    background: #014749;
+}
+
+#sidebar ul.components {
+    padding: 20px 0;
+    border-bottom: 1px solid #47748b;
+    padding-left: 20px;
+}
+
+#sidebar ul p {
+    color: #fff;
+    padding: 10px;
+}
+
+#sidebar ul li a {
+    padding: 10px 20px;
+    font-size: 1.1em;
+    display: block;
+    text-decoration: none;
+    color: white;
+}
+
+#sidebar ul li a:hover,
+#sidebar ul li a:focus {
+    color: #014749;
+    background: #fff;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+#sidebar ul li.active>a,
+a[aria-expanded="true"] {
+    color: #fff;
+    background: #014749;
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+    background: #014749;
+}
+
+ul.CTAs {
+    padding: 20px;
+}
+
+ul.CTAs a {
+    text-align: center;
+    font-size: 0.9em !important;
+    display: block;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+a.download {
+    background: #fff;
+    color: #7386D5;
+}
+
+a.article,
+a.article:hover {
+    background: #6d7fcc !important;
+    color: #fff !important;
+}
+
+.hidden{
+  display: none;
+}
+
+.badge {
+    font-size: 0.75rem;
+    border-radius: 0.5rem;
+    padding: 0.25rem 0.5rem;
+    background-color: #ffc107;
+    color: #000;
+  }
+
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+
+#content {
+    width: 100%;
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
+.logout{
+  background-color: #014749;
+  border:2px solid #fff;
+  color: #fff;
+  border-radius: 10px;
+  padding: 5px 15px;
+}
+.alert-div{
+  display: flex;
+  padding: 0;
+  background-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  color: rgba(3, 150, 195, 0.831);
+}
+
+.alert-div marquee span{
+  color: rgb(252, 10, 10);
+  animation: blink .5s infinite;
+
+}
+/* .alert-div marquee i{
+  color: red;
+} */
+.alert-div[data-alert="0"]{
+ display: none;
+}
+.alert-div[data-alert="1"] i {
+  font-size: 30px;
+  color: red;
+  animation: blink 1s infinite;
+}
+.alert-div i span{
+  font-size: 16px;
+  margin-left: 5px;
+  }
+
+/* Define the blinking animation */
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0.2; }
+  100% { opacity: 1; }
+}
+
+
+
+
+
+
+
+.add-notification {
+  background-color: #f8f9fa;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.add-notification h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.add-notification label {
+  font-weight: bold;
+}
+
+.add-notification input[type="text"],
+.add-notification textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: vertical; /* Allows vertical resizing of the textarea */
+}
+
+.add-notification button[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.add-notification button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+
+@media screen and (max-width: 768px) {
+    #sidebar {
+        margin-left: -250px;
+    }
+    #sidebar.active {
+        margin-left: 0;
+    }
+    #sidebarCollapse span {
+        display: none;
+    }
+   
+}
