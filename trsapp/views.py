@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.views import View
 from django.http import HttpResponse
 
-from .models import Login_model
+from .models import Login_model, complaint_model, user_model
 
 # Create your views here.
 
@@ -52,7 +52,8 @@ class Trains(View):
     
 class Users(View):
     def get(self, request):
-        return render(request, 'Administrator/users.html')
+        c=user_model.objects.all()
+        return render(request, 'Administrator/users.html', {'a':c})
     
 class Viewseat(View):
     def get(self, request):
@@ -68,7 +69,8 @@ class Compartments(View):
     
 class Complaints(View):
     def get(self, request):
-        return render(request, 'Administrator/complaints.html')
+        d=complaint_model.objects.all()
+        return render(request, 'Administrator/complaints.html',{'b':d})
     
 class CreateStatus(View):
     def get(self, request):
@@ -78,6 +80,14 @@ class CreateStatus(View):
 class Viewstatus(View):
     def get(self, request):
         return render(request, 'Administrator/viewStatus.html')
+    
+class Alert(View):
+    def get(self, request):
+        return render(request, 'Administrator/alert.html')
+class Bookings(View):
+    def get(self, request):
+        return render(request, 'Administrator/bookings.html')
+    
     
     
 

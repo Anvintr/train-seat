@@ -16,7 +16,9 @@ urlpatterns = [
     path('base',Base.as_view(), name='base'),
     path('compartments',Compartments.as_view(), name='compartments'),
     path('complaints',Complaints.as_view(), name='complaints'),
-    path('createStatus',CreateStatus.as_view(), name='createStatus'),
+    path('alert',Alert.as_view(), name='alert'),
+    path('bookings',Bookings.as_view(), name='bookings'),
+    
      
      
      

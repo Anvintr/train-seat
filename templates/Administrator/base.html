@@ -8,7 +8,7 @@
     <title>Bootstrap Sidebar Toggler</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />    
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
     <link rel="stylesheet" href="{%static 'css/style2.css'%}">
 
     <style>
@@ -46,30 +46,33 @@
 
             <ul class="list-unstyled components">
                 <li>
-                    <a href="dashboard.html"><i class="fas fa-home"></i> Home</a>
+                    <a href="/dash"><i class="fas fa-home"></i> Home</a>
                 </li>
                 <li>
                     <a href="users.html"><i class="fa-solid fa-users"></i> Users</a>
                 </li>
                 <li>
-                    <a href="bookings.html"><i class="fa-solid fa-user-check"></i>Booking Details</a>
+                    <a href="/bookings "><i class="fa-solid fa-user-check"></i>Booking Details</a>
                 </li>
                 <li>
-                    <a href="routes.html"><i class="fa-solid fa-route"></i>Routes</a>
+                    <a href="/routes"><i class="fa-solid fa-route"></i>Routes</a>
                 </li>
                 <li>
-                    <a href="stations.html"><i class="fa-solid fa-school"></i>Railway Stations</a>
+                    <a href="/alert"><i class="fa-solid fa-route"></i>alert</a>
+                </li>
+                <li>
+                    <a href="/stations"><i class="fa-solid fa-school"></i>Railway Stations</a>
                 </li>   
                 <li>
-                    <a href="trains.html"><i class="fa-solid fa-train-subway"></i>Trains</a>
+                    <a href="/trains"><i class="fa-solid fa-train-subway"></i>Trains</a>
                 </li>              
                 <li>
-                    <a href="compartments.html"><i class="fa-solid fa-trailer"></i>Compartments</a>
+                    <a href="/compartments"><i class="fa-solid fa-trailer"></i>Compartments</a>
                 </li>  
                 <li>
-                    <a href="complaints.html"><i class="fa-solid fa-message"></i>Complaints <span class="badge">3</span></a>
+                    <a href="/complaints"><i class="fa-solid fa-message"></i>Complaints <span class="badge">3</span></a>
                 </li>
-
+                
             </ul>
            <div style="text-align: center;">
             <a href="#" class="logout"><i class="fa-solid fa-power-off"></i>Logout</a>
@@ -94,7 +97,8 @@
                     </marquee>
                 </div>
                 <!-- code block here -->
-
+                 {% block content%}
+{% endblock%}
                 <!-- code block ends -->
             </div>
         </div>
