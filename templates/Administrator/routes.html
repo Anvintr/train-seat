@@ -17,47 +17,22 @@
                             </tr>
                         </thead>
                         <tbody>
+                            {% for i in a %}
                             <tr>
-                                <th scope="row">1</th>
-                                <td>Manglore</td>
-                                <td>Coimbatore</td>
+                                <th scope="row">{{forloop.counter}}</th>
+                                <td>{{i.source}}</td>
+                                <td>{{i.destination}}</td>
                                 <td>
-                                    <a href="#" class="btn btn-primary" data-id="1" data-source="Manglore" data-destination="Coimbatore" onclick="openEditModal(this)">edit</a>
-                                    <a href="#" class="btn btn-danger"
+                                    <a href="/editroute/{{i.id}}" class="btn btn-primary" data-id="1" data-source="Manglore" data-destination="Coimbatore" >edit</a>
+                                    <a href="/deleteroute/{{i.id}}" class="btn btn-danger"
                                         onclick="confirm('are youe sure to delete this user?')">delete</a>
                                 </td>
                             </tr>
-
+                            {% endfor %}
                         </tbody>
                     </table>
                 </div>
-                <!-- Modal -->
-                <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="routeModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="routeModalLabel">Edit Route</h5>
-                            </div>
-                            <div class="modal-body">
-                                <form id="routeForm" action="#">
-                                    <div class="mb-3">
-                                        <label for="source" class="form-label">Source</label>
-                                        <input type="text" class="form-control" id="source" name="source" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="destination" class="form-label">Destination</label>
-                                        <input type="text" class="form-control" id="destination" name="destination"
-                                            required>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">save changes</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
+              
                  <!-- Add Modal -->
                  <div class="modal fade" id="AddModal" tabindex="-1" aria-labelledby="routeModalLabel"
                  aria-hidden="true">
@@ -67,7 +42,8 @@
                              <h5 class="modal-title" id="routeModalLabel">Add New Route</h5>
                          </div>
                          <div class="modal-body">
-                             <form id="routeForm" action="#">
+                             <form id="routeForm" action="/routes" method="post">
+                                {% csrf_token %}
                                  <div class="mb-3">
                                      <label for="source" class="form-label">Source</label>
                                      <input type="text" class="form-control" id="source" name="source" required>

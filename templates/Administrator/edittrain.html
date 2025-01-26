@@ -1,0 +1,30 @@
+
+
+{% extends 'Administrator/base.html' %}
+{% block content%}
+
+
+<form id="StationForm" action="#">
+    <div class="mb-3">
+        <label for="route" class="form-label">Route</label>
+        <select name="route" id="route">
+            <option value="1">please select route</option>
+           {% comment %} {% for i in a %}
+            <option value='{{i.id}}'>{{i.source}} - {{i.destination}}</option>
+            {% endfor %} {% endcomment %}
+            
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="name" class="form-label">Train No.</label>
+        <input type="number" class="form-control" value='{{a.train_number}}' name="number" >
+    </div>
+    <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" value='{{a.train_name}}' name="name" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+</form>
+
+
+{%endblock%}

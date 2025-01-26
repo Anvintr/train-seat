@@ -4,7 +4,9 @@ from django.shortcuts import render
 from django.views import View
 from django.http import HttpResponse
 
-from .models import Login_model, complaint_model, user_model
+from trsapp.forms import Routes_form, train_form
+
+from .models import Login_model, Route_model, Train_model, complaint_model, user_model
 
 # Create your views here.
 
@@ -32,12 +34,35 @@ class Dashboard(View):
     
 class Routes(View):
     def get(self, request):
-        return render(request, 'Administrator/routes.html')
-    
+        c=Route_model.objects.all()
+        return render(request, 'Administrator/routes.html', {'a':c})
+    def post(self, request):
+        c=Routes_form(request.POST)
+        if c.is_valid():
+            c.save()
+            return HttpResponse('''<script>alert("route added successfully");window.location='/routes'</script>''')
+        
+class Delete_Route(View):
+    def get(self, request, id):
+        c=Route_model.objects.get(id=id)
+        c.delete()
+        return HttpResponse('''<script>alert("route deleted successfully");window.location='/routes'</script>''')
     
 class Seats(View):
     def get(self, request):
         return render(request, 'Administrator/seats.html')
+    
+class editroute(View):
+    def get(self, request, id):
+        c=Route_model.objects.get(id=id)
+        return render(request, 'Administrator/editroute.html', {'a':c})
+    def post(self, request, id):
+        c=Route_model.objects.get(id=id)
+        d=Routes_form(request.POST, instance=c)
+        if d.is_valid():
+            d.save()
+            return HttpResponse('''<script>alert("route updated successfully");window.location='/routes'</script>'''
+            )
     
 class Stations(View):
     def get(self, request):
@@ -47,7 +72,26 @@ class Stations(View):
 
 class Trains(View):
     def get(self, request):
-        return render(request, 'Administrator/trains.html')
+        c=Route_model.objects.all()
+        d = Train_model.objects.all()
+        return render(request, 'Administrator/trains.html', {'a':c, 'd':d})
+    def post(self, request):
+        c=train_form(request.POST)
+        if c.is_valid():
+            c.save()
+            return HttpResponse('''<script>alert("train added successfully");window.location='/trains'</script>''')
+        
+class Delete_Train(View):
+    def get(self, request, id):
+        c=Train_model.objects.get(id=id)
+        c.delete()
+        return HttpResponse('''<script>alert("train deleted successfully");window.location='/trains'</script>''')
+    
+class EditTrain(View):
+    def get(self, request, id):
+        c=Train_model.objects.get(id=id)
+        return render(request, 'Administrator/edittrain.html', {'a':c})
+
     
     
 class Users(View):

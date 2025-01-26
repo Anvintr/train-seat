@@ -4,8 +4,8 @@
 
                 <!-- code block here -->
                 <div class="tbl-div">
-                    <h3>Stations</h3>
-                    <button href="#" class="btn btn-primary add-btn" onclick="openModel()">Add new stations</button>
+                    <h3>trains</h3>
+                    <button href="#" class="btn btn-primary add-btn" onclick="openModel()">Add new trains</button>
                     <table class="table table-primary table-striped-columns table-hover">
                         <thead>
                             <tr class="table-success">
@@ -17,56 +17,26 @@
                             </tr>
                         </thead>
                         <tbody>
+                            {% for i in d %}
                             <tr>
-                                <th scope="row">1</th>
-                                <td>12234</td>
-                                <td>Vande Bharath</td>
-                                <td>Mangalore-Trivandrum</td>
+                                <th scope="row">{{forloop.counter}}</th>
+                                <td>{{i.train_number}}</td>
+                                <td>{{i.train_name}}</td>
+                                <td>{{i.ROUTE_ID.source}} - {{i.ROUTE_ID.destination}}</td>
                                 <td>
-                                    <a href="viewStatus.html" class="btn btn-primary">View status</a>
-                                    <a href="createStatus.html" class="btn btn-warning">create status</a>
-                                    <a href="#" class="btn btn-primary" data-id="1" data-name="Vande Bharath"
-                                        data-route-id="2" data-train-number="12234" onclick="openEditTrainModal(this)">Edit</a>
+                                    <a href="/viewstatus" class="btn btn-primary">View status</a>
+                                    <a href="/status" class="btn btn-warning">create status</a>
+                                    
+                                    <a href="/edittrain/{{i.id}}" class="btn btn-primary">Edit</a>
+                                    <a href="/deletetrain/{{i.id}}" class="btn btn-danger" onclick="return confirm('are you sure you want to delete')">Delete</a>
                                 </td>
                             </tr>
-
+                         {%endfor%}
                         </tbody>
                     </table>
                 </div>
 
-                <!-- Edit Modal -->
-                <div class="modal fade" id="EditModal" tabindex="-1" aria-labelledby="routeModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="routeModalLabel">Edit Train</h5>
-                            </div>
-                            <div class="modal-body">
-                                <form id="StationForm" action="#">
-                                    <div class="mb-3">
-                                        <label for="route" class="form-label">Route</label>
-                                        <select name="route" id="route">
-                                            <option value="1">Mangalore-Coimbatore</option>
-                                            <option value="2">Mangalore-Trivandrum</option>
-                                            <option value="3">Coimbatore-Trivandrum</option>
-                                        </select>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="name" class="form-label">Train No.</label>
-                                        <input type="number" class="form-control" id="number" name="number" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="name" class="form-label">Name</label>
-                                        <input type="text" class="form-control" id="name" name="name" required>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Save Changes</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+               
 
                 <!-- Add Modal -->
                 <div class="modal fade" id="AddModal" tabindex="-1" aria-labelledby="routeModalLabel"
@@ -77,23 +47,24 @@
                                 <h5 class="modal-title" id="routeModalLabel">Add New Train</h5>
                             </div>
                             <div class="modal-body">
-                                <form id="StationForm" action="#">
+                                <form id="StationForm" action="/trains" method="post">
+                                {%csrf_token%}
                                     <div class="mb-3">
                                         <label for="destination" class="form-label">Route</label>
-                                        <select name="route" id="route">
+                                        <select name="ROUTE_ID" id="route">
                                             <option disabled selected>--select Station--</option>
-                                            <option value="1">Mangalore-Coimbatore</option>
-                                            <option value="2">Mangalore-Trivandrum</option>
-                                            <option value="3">Coimbatore-Trivandrum</option>
+                                            {% for i in a %}
+                                            <option value='{{i.id}}'>{{i.source}} - {{i.destination}}</option>
+                                            {% endfor %}
                                         </select>
                                     </div>
                                     <div class="mb-3">
                                         <label for="source" class="form-label">Train No.</label>
-                                        <input type="number" class="form-control" id="number" name="number" required>
+                                        <input type="number" class="form-control" id="number" name="train_number" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="source" class="form-label">Name</label>
-                                        <input type="text" class="form-control" id="name" name="name" required>
+                                        <input type="text" class="form-control" id="name" name="train_name" required>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Add Train</button>
                                 </form>
